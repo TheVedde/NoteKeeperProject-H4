@@ -19,13 +19,15 @@ namespace NoteKeeper.Views
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel viewModel;
+       
 
         public ItemsPage()
         {
             InitializeComponent();
-
+           
             BindingContext = viewModel = new ItemsViewModel();
         }
+
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
