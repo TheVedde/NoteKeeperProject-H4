@@ -17,37 +17,20 @@ namespace NoteKeeper.Views
     {
         ItemDetailViewModel viewModel;
 
-        public Note Note { get; set; }
-
-        public IList<String> CourseList { get; set; }
-
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-            InitializeData();
-           
-            BindingContext = Note;
-            NoteCourse.BindingContext = this;
+            
+            this.viewModel = viewModel;
+            BindingContext = this.viewModel;
         }
-
-
 
         public ItemDetailPage()
         {
             InitializeComponent();
-            InitializeData();
-            BindingContext = Note;
-            NoteCourse.BindingContext = this;
-        }
 
-
-        async void InitializeData()
-        {
-            var pluralsightDatastore = new MockPluralsightDataStore();
-            CourseList = await pluralsightDatastore.GetCoursesAsync();
-
-            Note = new Note { Heading = "Test Note", Text = "Text for the test note" };
-
+            viewModel = new ItemDetailViewModel();
+            BindingContext = viewModel;
         }
 
         public void Cancel_Clicked(object sender, EventArgs eventArgs)

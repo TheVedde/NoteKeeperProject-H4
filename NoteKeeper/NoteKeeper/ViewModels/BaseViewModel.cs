@@ -13,6 +13,8 @@ namespace NoteKeeper.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IPluralsightDataStore pluralsightDataStore => DependencyService.Get<IPluralsightDataStore>() ?? new MockPluralsightDataStore();
+
 
         bool isBusy = false;
         public bool IsBusy
