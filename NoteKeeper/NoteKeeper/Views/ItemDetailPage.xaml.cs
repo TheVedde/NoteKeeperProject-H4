@@ -25,7 +25,7 @@ namespace NoteKeeper.Views
             BindingContext = this.viewModel;
         }
 
-        public ItemDetailPage()
+        public ItemDetailPage(Note note = null)
         {
             InitializeComponent();
 
@@ -35,14 +35,15 @@ namespace NoteKeeper.Views
 
         public void Cancel_Clicked(object sender, EventArgs eventArgs)
         {
-            DisplayAlert("Cancel option", "Cancel was selected", "Button 2", "Button 1");
+
+            Navigation.PopModalAsync();
 
         }
 
         public void Save_Clicked(object sender, EventArgs eventArgs)
         {
-            DisplayAlert("Save option", "Save was clicked", "Button 2", "Button 1");
-
+            MessagingCenter.Send(this, "saveNote", viewModel.Note);
+            Navigation.PopModalAsync();
         }
     }
 }
